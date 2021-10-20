@@ -13,7 +13,7 @@ if os.environ.get('DISPLAY','') == '':
 import matplotlib.pyplot as plt
 
 np.set_printoptions(threshold=np.inf)
-string_version = "1.6 (12Oct2020)"
+string_version = "1.7 (20 Oct 2021)"
 
 dict_param_formatters = {'PSR': "{:<17s}", 'PSRJ': "{:<17s}", 'RAJ': "{:<9s}", 'DECJ': "{:<9s}",'PMRA': "{:<19s}",'PMDEC': "{:<19s}",'PX': "{:<20s}",'F0': "{:<6s}",'F1': "{:<8s}",'F2': "{:<8s}",'F3': "{:<8s}",'F4': "{:<8s}",'F5': "{:<8s}",'PEPOCH': "{:<14s}",'START': "{:<17s}",'FINISH': "{:<17s}",'DM': "{:<17s}",'DMEPOCH': "{:<15s}",'SOLARN0': "{:<21s}",'EPHEM': "{:<20s}",'CLK': "{:<20s}",'UNITS': "{:<20s}",'TIMEEPH': "{:<20s}",'T2CMETHOD': "{:<20s}",'CORRECT_TROPOSPHERE': "{:<20s}",'PLANET_SHAPIRO': "{:<20s}",'DILATEFREQ': "{:<20s}",'NTOA': "{:<23s}",'TRES': "{:<21s}",'TZRMJD': "{:<8s}",'TZRFRQ': "{:<18s}",'TZRSITE': "{:<25s}",'NITS': "{:<23s}",'BINARY': "{:<18s}",'A1': "{:<15s}",'E': "{:<14s}",'T0': "{:<10s}", 'TASC': "{:<10s}", 'OM': "{:<10s}",'PB': "{:<12s}",'FB0': "{:<7s}",'FB1': "{:<7s}",'FB2': "{:<7s}",'FB3': "{:<7s}",'FB4': "{:<7s}",'FB5': "{:<7s}",'FB6': "{:<7s}",'FB7': "{:<7s}",'FB8': "{:<7s}",'FB9': "{:<7s}",'FB10': "{:<7s}",'FB11': "{:<7s}",'FB12': "{:<7s}",'FB13': "{:<7s}",'GAMMA': "{:<17s}",'PBDOT': "{:<17s}",'OMDOT': "{:<17s}",'SINI': "{:<18s}",'MTOT': "{:<18s}",'M2': "{:<18s}",'EPS1': "{:<18s}",'EPS2': "{:<18s}"}
 
@@ -439,6 +439,7 @@ inf_file = "/".join(infile.split("/")[:-1]) + "/" + infile_basename + ".inf"
 if (verbosity_level >= 1 ):
         print( get_command_output_with_pipe("cat %s" % (inf_file), "grep Epoch") )
 
+print(inf_file)
 flag_is_barycentered = int(get_command_output_with_pipe("cat %s" % (inf_file), "grep Barycentered").strip().split("=")[-1])
 if flag_is_barycentered == 1:
         print( "ERROR: The input time series seems to be barycentered. SPIDER_TWISTER only works with TOPOCENTRIC PRESTO time series!" )
